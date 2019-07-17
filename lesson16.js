@@ -20,15 +20,15 @@ var nameFilter = function(filteredName, anonymousFunction) {
     for (var i = 0; i < people.length; i++) {
         let currentName = people[i].name
         if (currentName != filteredName) {
+            anonymousFunction(i)
             results.push(currentName)
-
         }
     }
 
     return results
 }
 
-var filteredNames = nameFilter("Betty", function(name) {
-    console.log("This Ran")
+var filteredNames = nameFilter("Betty", function(count) {
+    console.log("This Ran " + count)
 })
 console.log(filteredNames)
