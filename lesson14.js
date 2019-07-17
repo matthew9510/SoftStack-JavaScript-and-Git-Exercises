@@ -9,18 +9,25 @@ var people = [
     { name: "Betty", age: 37 }
     ]
 
-
-var nameFilter = function(filteredName) {
-    var results = {}
-    for (var i = 0; i < people.length; i++) {
-        let currentName = people[i].name
-        if (currentName != filteredName) {
-            results.push(currentName)
-        }
-    }
-    return results
+function nameFilter(desiredNameToReject){
+    var filterName = (desiredNameToReject) => (person) => person.name !== desiredNameToReject
+    var filteredPeople = people.filter(filterName(desiredNameToReject));
+    filteredPeople.forEach((person) => console.log("My name is", person["name"]))
 }
 
+// var nameFilter = function(filteredName) {
+//     var results = []
+//     for (var i = 0; i < people.length; i++) {
+//         let currentName = people[i].name
+//         if (currentName !== filteredName) {
+//             results.push(currentName)
+//         }
+//     }
+//     return results
+// }
 
-var filteredNames = nameFilter()
-console.log(filteredNames)
+
+// var filteredNames = nameFilter("Roger")
+// console.log(filteredNames)
+
+nameFilter("Roger")
