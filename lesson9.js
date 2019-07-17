@@ -10,14 +10,21 @@ var people = [
     { name: "Betty", age: 37 }
     ]
 
-var nameFilter = function(name) {
-    let name = "Eric"
-    for (let i = 0; i < people.length; i++) {
-        let name = people[i].name
-        if (name != filteredName) {
-            console.log("My Name is " + name)
-        }
-    }
+function nameFilter(desiredNameToReject){
+    var filterName = (desiredNameToReject) => (person) => person.name !== desiredNameToReject
+    var filteredPeople = people.filter(filterName(desiredNameToReject));
+    filteredPeople.forEach((person) => console.log("My name is", person["name"]))
 }
 
+
+// var nameFilter = function(filteredName) {
+//     for (let i = 0; i < people.length; i++) {
+//         let name = people[i].name
+//         if (name != filteredName) {
+//             console.log("My Name is " + name)
+//         }
+//     }
+// }
+
 nameFilter("Roger")
+
